@@ -1,8 +1,7 @@
 export default function components() {
-
   // div
   function divCI(className, id) {
-    return new Element('div').addAttributes({
+    return new Element("div").addAttributes({
       class: className,
       id,
     });
@@ -10,7 +9,7 @@ export default function components() {
 
   // button
   function butCIT(className, id, text) {
-    return new Element('button')
+    return new Element("button")
       .addAttributes({
         class: className,
         id,
@@ -20,9 +19,9 @@ export default function components() {
 
   // radio button
   function radCINCh(className, id, name, isChecked) {
-    return new Element('input').addAttributes({
+    return new Element("input").addAttributes({
       class: className,
-      type: 'radio',
+      type: "radio",
       id,
       name,
       value: id,
@@ -30,9 +29,9 @@ export default function components() {
     });
   }
 
-  // image 
+  // image
   function imgSACI(src, alt, className, id) {
-    return new Element('img').addAttributes({
+    return new Element("img").addAttributes({
       src,
       alt,
       class: className,
