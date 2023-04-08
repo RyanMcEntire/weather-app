@@ -1,3 +1,3 @@
-# webpack-project-template
+# Weather App
 
-An ongoing repository for starting a project with webpack.
+A project for practicing using an API to get weather information
