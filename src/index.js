@@ -1,5 +1,6 @@
 import './style.css';
 import printMe from './other-stuff';
+import getWeather from './controller/get-api';
 
 function component() {
   const element = document.createElement('div');
@@ -16,3 +17,5 @@ function component() {
 }
 
 document.body.appendChild(component());
+
+getWeather("ogden");
