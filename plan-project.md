@@ -3,7 +3,15 @@
 - Function fetches data from API
 - Flag for america
 - Functions that process JSON into object with the data I want
-  - create two objects
+  - data I want:
+    - current temp
+    - day high
+    - day low
+    - weather quality
+    - precipitation
+    - wind
+    - humidity
+  * create two objects
     - weather C
     - weather F
 
