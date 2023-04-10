@@ -7,13 +7,22 @@ export default function components() {
     });
   }
 
+  function divCIT(className, id, text) {
+    return new Element("div")
+      .addAttributes({
+        class: className,
+        id,
+      })
+      .addText(text);
+  }
+
   // button
   function butCIT(className, id, text) {
     return new Element("button")
       .addAttributes({
         class: className,
         id,
-        type: button,
+        type: "button",
       })
       .addText(text);
   }
@@ -49,5 +58,5 @@ export default function components() {
     });
   }
 
-  return { divCI, butCIT, radCINCh, imgSACI, inpCIIn2 };
+  return { divCI, divCIT, butCIT, radCINCh, imgSACI, inpCIIn };
 }
