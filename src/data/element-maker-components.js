@@ -13,6 +13,7 @@ export default function components() {
       .addAttributes({
         class: className,
         id,
+        type: button,
       })
       .addText(text);
   }
@@ -29,6 +30,15 @@ export default function components() {
     });
   }
 
+  function inpCIIn(className, id, init) {
+    return new Element("input").addAttributes({
+      class: className,
+      type: "text",
+      id,
+      value: init,
+    });
+  }
+
   // image
   function imgSACI(src, alt, className, id) {
     return new Element("img").addAttributes({
@@ -39,5 +49,5 @@ export default function components() {
     });
   }
 
-  return { divCI, butCIT, radCINCh, imgSACI };
+  return { divCI, butCIT, radCINCh, imgSACI, inpCIIn2 };
 }
