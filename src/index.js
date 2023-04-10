@@ -1,8 +1,7 @@
 import "./style.css";
 import getWeather from "./controller/get-api";
-import pageBuild from "./data/components";
+import defaultPageBuild from "./controller/build-page";
 
 getWeather("ogden");
-
-document.body.appendChild(pageBuild());
+defaultPageBuild();
 
