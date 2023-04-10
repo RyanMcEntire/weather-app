@@ -2,24 +2,31 @@ import components from "./element-maker-components";
 
 const ele = components();
 
-export function inputForm() {
+const defaultValue = "Ogden";
+const cityName = "Ogden";
+const countryName = "USA";
+const localTime = "4:20";
+const dayHigh = "97";
+const nightLow = "23";
+const currentTemp = "69";
+const conditionText = "sunny";
+
+function inputForm() {
   return ele
     .divCI("form-container", "form-container")
     .addChild(ele.inpCIIn("city-field", "city-field", defaultValue))
-    .addChild(ele.butCIT("submit-city", "submit-city", "Get Weather"))
-    .build();
+    .addChild(ele.butCIT("submit-city", "submit-city", "Get Weather"));
 }
 
-export function location() {
+function location() {
   return ele
     .divCI("location-container", "location-container")
     .addChild(ele.divCIT("city", "city", cityName))
     .addChild(ele.divCIT("country", "country", countryName))
-    .addChild(ele.divCIT("local-time", "local-time", localTime))
-    .build();
+    .addChild(ele.divCIT("local-time", "local-time", localTime));
 }
 
-export function hero() {
+function hero() {
   return ele
     .divCI("hero-container", "hero-container")
     .addChild(
@@ -28,8 +35,8 @@ export function hero() {
         .addChild(
           ele
             .divCI("high-low", "high-low")
-            .addChild(ele.divCIT("dayHigh", "dayHigh ", `Day ↑ ${dayHigh} `))
-            .addChild(ele.divCIT("dayLow", "dayLow ", `Night ↓ ${nightLow}`))
+            .addChild(ele.divCIT("dayHigh", "dayHigh ", `Day ↑ ${dayHigh}° `))
+            .addChild(ele.divCIT("dayLow", "dayLow ", `Night ↓ ${nightLow}°`))
         )
         .addChild(ele.divCIT("current-temp", "current-temp", `${currentTemp}°`))
     )
@@ -38,6 +45,14 @@ export function hero() {
         .divCI("hero-2", "hero-2")
         .addChild(ele.divCI("condition-icon", "condition0icon"))
         .addChild(ele.divCIT("condition-text", "condition-text", conditionText))
-    )
+    );
+}
+
+export default function pageBuild() {
+  return ele
+    .divCI("main-page", "main-page")
+    .addChild(inputForm())
+    .addChild(location())
+    .addChild(hero())
     .build();
 }

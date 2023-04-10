@@ -1,3 +1,5 @@
+import Element from "./element-maker";
+
 export default function components() {
   // div
   function divCI(className, id) {
