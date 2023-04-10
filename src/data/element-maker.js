@@ -39,7 +39,7 @@ export default class Element {
     const newElement = document.createElement(this.elementType);
 
     for (const [attribute, value] of Object.entries(this.attributes)) {
-      if (typeof value === "boolean") {
+      if (typeof value === 'boolean') {
         newElement.toggleAttribute(attribute, value);
       } else {
         newElement.setAttribute(attribute, value);

@@ -3,7 +3,7 @@ export default async function getWeather(city) {
 
   const response = await fetch(
     `http://api.weatherapi.com/v1/current.json?key=8803542d4d2f400da43183121230604&q=${city}&aqi=no)`,
-    { mode: "cors" }
+    { mode: 'cors' }
   );
   const weatherData = await response.json();
 

@@ -1,9 +1,9 @@
-import componentElements from "../data/components";
-import components from "../data/element-maker-components";
-import MyWeather from "../data/weather-class";
-import getWeather from "./get-api";
+import componentElements from '../data/components';
+import components from '../data/element-maker-components';
+import MyWeather from '../data/weather-class';
+import getWeather from './get-api';
 
-const defaultWeatherData = getWeather("ogden");
+const defaultWeatherData = getWeather('ogden');
 // FIXME: make myWeather asyncronously async await
 console.log(defaultWeatherData);
 console.log(new MyWeather(defaultWeatherData));
@@ -17,7 +17,7 @@ const section = componentElements();
 
 export default function defaultPageBuild() {
   return ele
-    .divCI("main-area", "main-area")
+    .divCI('main-area', 'main-area')
     .addChild(section.inputForm(defaultWeather().getCity()))
     .addChild(section.location())
     .addChild(section.hero())
