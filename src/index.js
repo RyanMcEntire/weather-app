@@ -2,5 +2,9 @@ import './style.css';
 // import getWeather from './controller/get-api';
 import defaultPageBuild from './controller/build-page';
 
-// getWeather("ogden");
-defaultPageBuild();
+async function build() {
+  const defaultPage = await defaultPageBuild();
+  document.body.appendChild(defaultPage);
+
+}
+build()

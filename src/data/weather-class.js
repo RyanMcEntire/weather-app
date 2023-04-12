@@ -1,6 +1,7 @@
 export default class MyWeather {
   constructor(data) {
     const now = data.current;
+    const forecastDay = data.forecast.forecastday[0].day;
     this.city = data.location.name;
     this.country = data.location.country;
     this.localTime = data.location.localtime;
@@ -10,6 +11,17 @@ export default class MyWeather {
     this.wind = { amer: now.wind_mph, else: now.wind_kph };
     this.gust = { amer: now.gust_mph, else: now.gust_kph };
     this.precip = { amer: now.precip_in, else: now.precip_mm };
+    this.maxTemp = { amer: forecastDay.maxtemp_f, else: forecastDay.maxtemp_c };
+    this.minTemp = { amer: forecastDay.mintemp_f, else: forecastDay.mintemp_c };
+    this.totalPrecip = {
+      amer: forecastDay.totalprecip_in,
+      else: forecastDay.totalprecip_mm,
+    };
+    this.cloud = now.cloud;
+    this.willItRain = forecastDay.daily_will_it_rain;
+    this.willItSnow = forecastDay.daily_will_it_snow;
+    this.chanceOfRain = forecastDay.daily_chance_of_rain;
+    this.chanceOfSnow = forecastDay.daily_chance_of_snow;
     this.condition = now.condition.text;
     this.humidity = now.humidity;
   }
@@ -52,5 +64,13 @@ export default class MyWeather {
 
   getCondition() {
     return this.condition;
+  }
+
+  getMaxTemp(format) {
+    return this.maxTemp[format];
+  }
+
+  getMinTemp(format) {
+    return this.minTemp[format];
   }
 }

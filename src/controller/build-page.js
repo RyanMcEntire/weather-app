@@ -21,8 +21,8 @@ export default async function defaultPageBuild() {
   const country = weather.getCountry();
   const localTime = weather.getTime();
   // TODO: add day high and low to class object and method
-  // const dayHigh = weather.get
-  // const nightLow =
+  const dayHigh = weather.getMaxTemp(format)
+  const nightLow = weather.getMinTemp(format);
   const currentTemp = weather.getTemp(format);
   const conditionText = weather.getCondition();
   console.log('weather-object', city, weather);
@@ -31,7 +31,7 @@ export default async function defaultPageBuild() {
     .divCI('main-area', 'main-area')
     .addChild(section.inputForm(city))
     .addChild(section.location(city, country, localTime))
-    .addChild(section.hero('96', '69', currentTemp, conditionText))
+    .addChild(section.hero(dayHigh, nightLow, currentTemp, conditionText))
     .build();
 }
 

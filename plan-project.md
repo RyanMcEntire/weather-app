@@ -25,6 +25,8 @@
 
 ### UI
 
+- style UI like a linux desktop with a couple terminal programs
+  - black screen with green icon/text glow using custom font icons and ascii pictures
 - single input form to input city with submit button
 - toggle switch between Celsius and Fahrenheit
 - display info from weather object
