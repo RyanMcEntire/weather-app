@@ -1,4 +1,4 @@
-import components from './element-maker-components';
+import components from './subcomponents';
 
 const ele = components();
 

@@ -49,4 +49,8 @@ export default class MyWeather {
   getPrecip(format) {
     return this.precip[format];
   }
+
+  getCondition() {
+    return this.condition;
+  }
 }

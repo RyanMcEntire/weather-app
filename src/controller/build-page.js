@@ -1,26 +1,37 @@
 import componentElements from '../data/components';
-import components from '../data/element-maker-components';
+import components from '../data/subcomponents';
 import MyWeather from '../data/weather-class';
 import getWeather from './get-api';
 
-const defaultWeatherData = getWeather('ogden');
-// FIXME: make myWeather asyncronously async await
-console.log(defaultWeatherData);
-console.log(new MyWeather(defaultWeatherData));
-function defaultWeather() {
-  const data = defaultWeatherData;
+// const defaultWeatherData = getWeather('ogden');
+
+async function defaultWeather() {
+  const data = await getWeather('Ogden');
+  console.log('async call', data);
   return new MyWeather(data);
 }
 
 const ele = components();
 const section = componentElements();
 
-export default function defaultPageBuild() {
+export default async function defaultPageBuild() {
+  const format = 'amer';
+  const weather = await defaultWeather();
+  const city = weather.getCity();
+  const country = weather.getCountry();
+  const localTime = weather.getTime();
+  // TODO: add day high and low to class object and method
+  // const dayHigh = weather.get
+  // const nightLow =
+  const currentTemp = weather.getTemp(format);
+  const conditionText = weather.getCondition();
+  console.log('weather-object', city, weather);
+  // 
   return ele
     .divCI('main-area', 'main-area')
-    .addChild(section.inputForm(defaultWeather().getCity()))
-    .addChild(section.location())
-    .addChild(section.hero())
+    .addChild(section.inputForm(city))
+    .addChild(section.location(city, country, localTime))
+    .addChild(section.hero('96', '69', currentTemp, conditionText))
     .build();
 }
 
