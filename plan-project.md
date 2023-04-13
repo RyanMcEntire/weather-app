@@ -41,3 +41,18 @@
 ### OPTIONAL
 
 - store flag option in local storage
+
+---
+
+- add the rest of the fields i want
+  - feelslike
+  - wind
+  - gust
+  - precip
+  - total precip
+  - cloud
+  - will it rain
+  - will it snow
+  - chance of rain
+  - chance of snow
+- add space for pictures

@@ -31,9 +31,9 @@ async function appendInfo(weather, format) {
   location.city.textContent = weather.getCity();
   location.country.textContent = weather.getCountry();
   location.localTime.textContent = weather.getTime();
-  hero.dayHigh.textContent = `Day 🠙 ${weather.getMaxTemp(format)}`;
-  hero.nightLow.textContent = `Night 🠛 ${weather.getMinTemp(format)}`;
-  hero.currentTemp.textContent = `Current Temperature: ${weather.getTemp(format)}`;
+  hero.dayHigh.textContent = `Day 🠙 ${weather.getMaxTemp(format)}°`;
+  hero.nightLow.textContent = `Night 🠛 ${weather.getMinTemp(format)}°`;
+  hero.currentTemp.textContent = `${weather.getTemp(format)}°`;
   hero.conditionText.textContent = weather.getCondition();
 }
 
@@ -47,7 +47,7 @@ export async function buttonClicked() {
   const cityChoice = selectors().inputForm.inputField.value;
   const data = await getWeather(cityChoice)
   const myData = new MyWeather(data)
-  const format = 'amer'
+  const format = 'amer' // TODO: needs to check user choice when implemented
   appendInfo(myData, format)
 }
 
