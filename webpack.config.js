@@ -13,7 +13,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Clowdy Template',
+      title: 'Weather App',
+      template: './src/template.ejs',
     }),
     new ESLintPlugin(),
   ],
