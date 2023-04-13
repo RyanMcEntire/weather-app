@@ -45,8 +45,10 @@
 ---
 
 - add the rest of the fields i want
-  - feelslike
-  - wind
+  - feelslike x
+  - wind speed
+  - wind degree
+  - wind direction
   - gust
   - precip
   - total precip
@@ -56,3 +58,4 @@
   - chance of rain
   - chance of snow
 - add space for pictures
+- add monospace font

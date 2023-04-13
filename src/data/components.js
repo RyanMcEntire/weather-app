@@ -38,6 +38,7 @@ export default function componentElements() {
               .addChild(ele.divCI('night-low', 'night-low'))
           )
           .addChild(ele.divCI('current-temp', 'current-temp'))
+          .addChild(ele.divCI('feels-like', 'feels-like'))
       )
       .addChild(
         ele

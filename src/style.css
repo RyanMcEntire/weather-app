@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
 div {
   border: 1px solid red;
   min-height: 1rem;
@@ -20,6 +22,18 @@ div > div > div > div {
 
 div > div > div > div > div {
   border: 1px solid rgb(142, 92, 35);
+}
+
+body {
+  background-color: #1a1a19;
+  font-family: 'Space Mono', monospace;
+  color: rgb(145, 253, 159);
+  text-shadow: 0 0 4px rgb(86, 221, 104), 0 0 8px rgb(57, 207, 77);
+}
+
+.main-area {
+  min-width: 20rem;
+  max-width: 30rem;
 }
 
 .hero-container {

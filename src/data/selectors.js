@@ -22,6 +22,7 @@ function selectors() {
       dayHigh: byID('day-high'),
       nightLow: byID('night-low'),
       currentTemp: byID('current-temp'),
+      feelsLike: byID('feels-like'),
       hero2: byID('hero-2'),
       conditionIcon: byID('condition-icon'),
       conditionText: byID('condition-text'),
