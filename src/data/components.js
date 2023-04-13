@@ -2,32 +2,24 @@ import components from './subcomponents';
 
 const ele = components();
 
-// const defaultValue = "Ogden";
-// const cityName = "Ogden";
-// const countryName = "USA";
-// const localTime = "4:20";
-// const dayHigh = "97";
-// const nightLow = "23";
-// const currentTemp = "69";
-// const conditionText = "sunny";
-
 export default function componentElements() {
-  function inputForm(defaultValue) {
+  const defaultCity = 'Ogden'
+  function inputForm() {
     return ele
       .divCI('form-container', 'form-container')
-      .addChild(ele.inpCIIn('city-field', 'city-field', defaultValue))
+      .addChild(ele.inpCIIn('city-field', 'city-field', defaultCity))
       .addChild(ele.butCIT('submit-city', 'submit-city', 'Get Weather'));
   }
 
-  function location(cityName, countryName, localTime) {
+  function location() {
     return ele
       .divCI('location-container', 'location-container')
-      .addChild(ele.divCIT('city', 'city', cityName))
-      .addChild(ele.divCIT('country', 'country', countryName))
-      .addChild(ele.divCIT('local-time', 'local-time', localTime));
+      .addChild(ele.divCIT('city', 'city', ''))
+      .addChild(ele.divCIT('country', 'country', ''))
+      .addChild(ele.divCIT('local-time', 'local-time', ''));
   }
 
-  function hero(dayHigh, nightLow, currentTemp, conditionText) {
+  function hero() {
     return ele
       .divCI('hero-container', 'hero-container')
       .addChild(
@@ -36,30 +28,25 @@ export default function componentElements() {
           .addChild(
             ele
               .divCI('high-low', 'high-low')
-              .addChild(ele.divCIT('day-high', 'day-high ', `Day ↑ ${dayHigh}° `))
-              .addChild(ele.divCIT('night-low', 'night-low ', `Night ↓ ${nightLow}°`))
+              .addChild(
+                ele.divCIT('day-high', 'day-high ', '')
+              )
+              .addChild(
+                ele.divCIT('night-low', 'night-low ', '')
+              )
           )
           .addChild(
-            ele.divCIT('current-temp', 'current-temp', `${currentTemp}°`)
+            ele.divCIT('current-temp', 'current-temp', '')
           )
       )
       .addChild(
         ele
           .divCI('hero-2', 'hero-2')
-          .addChild(ele.divCI('condition-icon', 'condition-icon'))
+          .addChild(ele.divCI('condition-icon', 'conditionicon'))
           .addChild(
-            ele.divCIT('condition-text', 'condition-text', conditionText)
+            ele.divCIT('condition-text', 'condition-text', '')
           )
       );
   }
   return { inputForm, location, hero };
 }
-
-// export default function pageBuild() {
-//   return ele
-//     .divCI("main-page", "main-page")
-//     .addChild(inputForm())
-//     .addChild(location())
-//     .addChild(hero())
-//     .build();
-// }

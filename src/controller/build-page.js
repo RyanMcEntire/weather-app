@@ -2,8 +2,20 @@ import componentElements from '../data/components';
 import components from '../data/subcomponents';
 import MyWeather from '../data/weather-class';
 import getWeather from './get-api';
+import selectors from '../data/selectors';
 
 // const defaultWeatherData = getWeather('ogden');
+
+export function buildStructures() {
+  const ele = components();
+  const section = componentElements();
+  return ele
+    .divCI('main-area', 'main-area')
+    .addChild(section.inputForm())
+    .addChild(section.location())
+    .addChild(section.hero())
+    .build();
+}
 
 async function defaultWeather() {
   const data = await getWeather('Ogden');
@@ -11,27 +23,16 @@ async function defaultWeather() {
   return new MyWeather(data);
 }
 
-
-
-const ele = components();
-const section = componentElements();
-
 export async function pageBuild(weather, format) {
-  const city = weather.getCity();
-  const country = weather.getCountry();
-  const localTime = weather.getTime();
-  const dayHigh = weather.getMaxTemp(format);
-  const nightLow = weather.getMinTemp(format);
-  const currentTemp = weather.getTemp(format);
-  const conditionText = weather.getCondition();
-  console.info('weather-object', city, weather);
-  //
-  return ele
-    .divCI('main-area', 'main-area')
-    .addChild(section.inputForm(city))
-    .addChild(section.location(city, country, localTime))
-    .addChild(section.hero(dayHigh, nightLow, currentTemp, conditionText))
-    .build();
+  const {location} = selectors();
+  const { hero } = selectors();
+  location.city.textContent = weather.getCity();
+  location.country.textContent = weather.getCountry();
+  location.localTime.textContent = weather.getTime();
+  hero.dayHigh.textContent = weather.getMaxTemp(format);
+  hero.nightLow.textContent = weather.getMinTemp(format);
+  hero.currentTemp.textContent = weather.getTemp(format);
+  hero.conditionIcon.textContent = weather.getCondition();
 }
 
 export async function defaultPageBuild() {
