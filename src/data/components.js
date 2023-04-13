@@ -36,8 +36,8 @@ export default function componentElements() {
           .addChild(
             ele
               .divCI('high-low', 'high-low')
-              .addChild(ele.divCIT('dayHigh', 'dayHigh ', `Day ↑ ${dayHigh}° `))
-              .addChild(ele.divCIT('dayLow', 'dayLow ', `Night ↓ ${nightLow}°`))
+              .addChild(ele.divCIT('day-high', 'day-high ', `Day ↑ ${dayHigh}° `))
+              .addChild(ele.divCIT('night-low', 'night-low ', `Night ↓ ${nightLow}°`))
           )
           .addChild(
             ele.divCIT('current-temp', 'current-temp', `${currentTemp}°`)
@@ -46,7 +46,7 @@ export default function componentElements() {
       .addChild(
         ele
           .divCI('hero-2', 'hero-2')
-          .addChild(ele.divCI('condition-icon', 'condition0icon'))
+          .addChild(ele.divCI('condition-icon', 'condition-icon'))
           .addChild(
             ele.divCIT('condition-text', 'condition-text', conditionText)
           )

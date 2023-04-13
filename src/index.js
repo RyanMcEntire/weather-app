@@ -1,10 +1,10 @@
 import './style.css';
 // import getWeather from './controller/get-api';
-import defaultPageBuild from './controller/build-page';
+import { defaultPageBuild } from './controller/build-page';
 
-async function build() {
-  const defaultPage = await defaultPageBuild();
+async function defaultBuild() {
+  const defaultPage = await defaultPageBuild('amer');
   document.body.appendChild(defaultPage);
-
 }
-build()
+
+defaultBuild();

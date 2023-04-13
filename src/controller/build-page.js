@@ -7,32 +7,36 @@ import getWeather from './get-api';
 
 async function defaultWeather() {
   const data = await getWeather('Ogden');
-  console.log('async call', data);
+  console.table('data', data);
   return new MyWeather(data);
 }
+
+
 
 const ele = components();
 const section = componentElements();
 
-export default async function defaultPageBuild() {
-  const format = 'amer';
-  const weather = await defaultWeather();
+export async function pageBuild(weather, format) {
   const city = weather.getCity();
   const country = weather.getCountry();
   const localTime = weather.getTime();
-  // TODO: add day high and low to class object and method
-  const dayHigh = weather.getMaxTemp(format)
+  const dayHigh = weather.getMaxTemp(format);
   const nightLow = weather.getMinTemp(format);
   const currentTemp = weather.getTemp(format);
   const conditionText = weather.getCondition();
-  console.log('weather-object', city, weather);
-  // 
+  console.info('weather-object', city, weather);
+  //
   return ele
     .divCI('main-area', 'main-area')
     .addChild(section.inputForm(city))
     .addChild(section.location(city, country, localTime))
     .addChild(section.hero(dayHigh, nightLow, currentTemp, conditionText))
     .build();
+}
+
+export async function defaultPageBuild() {
+  const defaultData = await defaultWeather();
+  return pageBuild(defaultData, 'amer');
 }
 
 // export default function defaultPageBuild() {
