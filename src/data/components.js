@@ -1,22 +1,28 @@
+/* eslint-disable import/no-cycle */
 import components from './subcomponents';
+import { buttonClicked } from '../controller/build-page';
 
 const ele = components();
 
 export default function componentElements() {
-  const defaultCity = 'Ogden'
+  const defaultCity = 'Ogden';
   function inputForm() {
     return ele
       .divCI('form-container', 'form-container')
       .addChild(ele.inpCIIn('city-field', 'city-field', defaultCity))
-      .addChild(ele.butCIT('submit-city', 'submit-city', 'Get Weather'));
+      .addChild(
+        ele
+          .butCIT('submit-city', 'submit-city', 'Get Weather')
+          .addEventListener('click', () => buttonClicked())
+      );
   }
 
   function location() {
     return ele
       .divCI('location-container', 'location-container')
-      .addChild(ele.divCIT('city', 'city', ''))
-      .addChild(ele.divCIT('country', 'country', ''))
-      .addChild(ele.divCIT('local-time', 'local-time', ''));
+      .addChild(ele.divCI('city', 'city'))
+      .addChild(ele.divCI('country', 'country'))
+      .addChild(ele.divCI('local-time', 'local-time'));
   }
 
   function hero() {
@@ -28,24 +34,16 @@ export default function componentElements() {
           .addChild(
             ele
               .divCI('high-low', 'high-low')
-              .addChild(
-                ele.divCIT('day-high', 'day-high ', '')
-              )
-              .addChild(
-                ele.divCIT('night-low', 'night-low ', '')
-              )
+              .addChild(ele.divCI('day-high', 'day-high'))
+              .addChild(ele.divCI('night-low', 'night-low'))
           )
-          .addChild(
-            ele.divCIT('current-temp', 'current-temp', '')
-          )
+          .addChild(ele.divCI('current-temp', 'current-temp'))
       )
       .addChild(
         ele
           .divCI('hero-2', 'hero-2')
-          .addChild(ele.divCI('condition-icon', 'conditionicon'))
-          .addChild(
-            ele.divCIT('condition-text', 'condition-text', '')
-          )
+          .addChild(ele.divCI('condition-icon', 'condition-icon'))
+          .addChild(ele.divCI('condition-text', 'condition-text'))
       );
   }
   return { inputForm, location, hero };

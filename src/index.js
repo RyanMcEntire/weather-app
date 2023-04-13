@@ -1,7 +1,5 @@
 import './style.css';
-// import getWeather from './controller/get-api';
-import { buildStructures } from './controller/build-page';
+import { buildStructures, defaultInfoBuild } from './controller/build-page';
 
-
-buildStructures()
-
+document.body.appendChild(buildStructures());
+defaultInfoBuild()

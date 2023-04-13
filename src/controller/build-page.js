@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import componentElements from '../data/components';
 import components from '../data/subcomponents';
 import MyWeather from '../data/weather-class';
@@ -19,32 +20,34 @@ export function buildStructures() {
 
 async function defaultWeather() {
   const data = await getWeather('Ogden');
-  console.table('data', data);
   return new MyWeather(data);
 }
 
-export async function pageBuild(weather, format) {
-  const {location} = selectors();
+async function appendInfo(weather, format) {
+  const { location } = selectors();
   const { hero } = selectors();
+  const { inputForm } = selectors();
+  inputForm.inputField.textContent = weather.getCity();
   location.city.textContent = weather.getCity();
   location.country.textContent = weather.getCountry();
   location.localTime.textContent = weather.getTime();
-  hero.dayHigh.textContent = weather.getMaxTemp(format);
-  hero.nightLow.textContent = weather.getMinTemp(format);
-  hero.currentTemp.textContent = weather.getTemp(format);
-  hero.conditionIcon.textContent = weather.getCondition();
+  hero.dayHigh.textContent = `Day 🠙 ${weather.getMaxTemp(format)}`;
+  hero.nightLow.textContent = `Night 🠛 ${weather.getMinTemp(format)}`;
+  hero.currentTemp.textContent = `Current Temperature: ${weather.getTemp(format)}`;
+  hero.conditionText.textContent = weather.getCondition();
 }
 
-export async function defaultPageBuild() {
+export async function defaultInfoBuild() {
   const defaultData = await defaultWeather();
-  return pageBuild(defaultData, 'amer');
+  console.log('default data', defaultData);
+  return appendInfo(defaultData, 'amer');
 }
 
-// export default function defaultPageBuild() {
-//   return ele
-//     .divCI("main-area", "main-area")
-//     .addChild(section.inputForm())
-//     .addChild(section.location())
-//     .addChild(section.hero())
-//     .build();
-// }
+export async function buttonClicked() {
+  const cityChoice = selectors().inputForm.inputField.value;
+  const data = await getWeather(cityChoice)
+  const myData = new MyWeather(data)
+  const format = 'amer'
+  appendInfo(myData, format)
+}
+
