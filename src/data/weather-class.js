@@ -2,9 +2,11 @@ export default class MyWeather {
   constructor(data) {
     const now = data.current;
     const forecastDay = data.forecast.forecastday[0].day;
-    this.city = data.location.name;
-    this.country = data.location.country;
-    this.localTime = data.location.localtime;
+    const loc = data.location;
+    this.city = loc.name;
+    this.region = loc.region;
+    this.country = loc.country;
+    this.localTime = loc.localtime;
     this.isDay = now.is_day;
     this.temp = { amer: now.temp_f, else: now.temp_c };
     this.feelsLike = { amer: now.feelslike_f, else: now.feelslike_c };
@@ -26,51 +28,11 @@ export default class MyWeather {
     this.humidity = now.humidity;
   }
 
-  getCity() {
-    return this.city;
+  getData(thing) {
+    return this[thing]
   }
 
-  getCountry() {
-    return this.country;
-  }
-
-  getTime() {
-    return this.localTime;
-  }
-
-  getIsDay() {
-    return this.isDay;
-  }
-
-  getTemp(format) {
-    return this.temp[format];
-  }
-
-  getFeelsLike(format) {
-    return this.feelsLike[format];
-  }
-
-  getWind(format) {
-    return this.wind[format];
-  }
-
-  getGust(format) {
-    return this.gust[format];
-  }
-
-  getPrecip(format) {
-    return this.precip[format];
-  }
-
-  getCondition() {
-    return this.condition;
-  }
-
-  getMaxTemp(format) {
-    return this.maxTemp[format];
-  }
-
-  getMinTemp(format) {
-    return this.minTemp[format];
+  getFormatData(format, data) {
+    return this[data][format]
   }
 }

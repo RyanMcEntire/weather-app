@@ -24,17 +24,35 @@ async function defaultWeather() {
 }
 
 async function appendInfo(weather, format) {
+  const tempSymbol = () => {
+    if (format === 'amer') {
+      return 'F';
+    }
+    return 'C';
+  };
   const { location } = selectors();
   const { hero } = selectors();
   const { inputForm } = selectors();
-  inputForm.inputField.textContent = weather.getCity();
-  location.city.textContent = weather.getCity();
-  location.country.textContent = weather.getCountry();
-  location.localTime.textContent = weather.getTime();
-  hero.dayHigh.textContent = `Day 🠙 ${weather.getMaxTemp(format)}°`;
-  hero.nightLow.textContent = `Night 🠛 ${weather.getMinTemp(format)}°`;
-  hero.currentTemp.textContent = `${weather.getTemp(format)}°`;
-  hero.conditionText.textContent = weather.getCondition();
+  inputForm.inputField.textContent = weather.getData('city');
+  location.city.textContent = weather.getData('city');
+  location.region.textContent = weather.getData('region');
+  location.country.textContent = weather.getData('country');
+  location.localTime.textContent = weather.getData('localTime');
+  hero.dayHigh.textContent = `Day🠙 ${weather.getFormatData(
+    format,
+    'maxTemp'
+  )}°${tempSymbol()}`;
+  hero.nightLow.textContent = `Night🠛 ${weather.getFormatData(
+    format,
+    'minTemp'
+  )}°  ${tempSymbol()}`;
+  hero.currentTemp.textContent = `${weather.getFormatData(
+    format,
+    'temp'
+  )}°${tempSymbol()}`;
+  hero.conditionText.textContent = `condition: \n${weather.getData(
+    'condition'
+  )}`;
 }
 
 export async function defaultInfoBuild() {
@@ -45,9 +63,8 @@ export async function defaultInfoBuild() {
 
 export async function buttonClicked() {
   const cityChoice = selectors().inputForm.inputField.value;
-  const data = await getWeather(cityChoice)
-  const myData = new MyWeather(data)
-  const format = 'amer' // TODO: needs to check user choice when implemented
-  appendInfo(myData, format)
+  const data = await getWeather(cityChoice);
+  const myData = new MyWeather(data);
+  const format = 'amer'; // TODO: needs to check user choice when implemented
+  appendInfo(myData, format);
 }
-

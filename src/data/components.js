@@ -21,6 +21,7 @@ export default function componentElements() {
     return ele
       .divCI('location-container', 'location-container')
       .addChild(ele.divCI('city', 'city'))
+      .addChild(ele.divCI('region', 'region'))
       .addChild(ele.divCI('country', 'country'))
       .addChild(ele.divCI('local-time', 'local-time'));
   }
@@ -43,7 +44,7 @@ export default function componentElements() {
       .addChild(
         ele
           .divCI('hero-2', 'hero-2')
-          .addChild(ele.divCI('condition-icon', 'condition-icon'))
+          // .addChild(ele.divCI('condition-icon', 'condition-icon'))
           .addChild(ele.divCI('condition-text', 'condition-text'))
       );
   }
