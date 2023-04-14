@@ -5,7 +5,7 @@ import { buttonClicked, switchActivated } from '../controller/build-page';
 const ele = components();
 
 export default function componentElements() {
-  const defaultCity = 'Ogden';
+  const defaultCity = 'Seattle';
   const defaultFormat = 'amer';
   function inputForm() {
     return ele
@@ -20,11 +20,14 @@ export default function componentElements() {
         ele
           .divCI('switch-container', 'switch-container')
           .addChild(ele.divCIT('switch-f', 'switch-f', 'F°'))
-          .addChild(ele.labelC('switch'))
           .addChild(
             ele
-              .checkCIIn('switch-box', 'switch-box', defaultFormat)
-              .addEventListener('click', (e) => switchActivated(e))
+              .labelC('switch')
+              .addChild(
+                ele
+                  .checkCIIn('switch-box', 'switch-box', defaultFormat)
+                  .addEventListener('click', (e) => switchActivated(e))
+              )
               .addChild(ele.spanC('slider'))
           )
           .addChild(ele.divCIT('switch-c', 'switch-c', 'C°'))

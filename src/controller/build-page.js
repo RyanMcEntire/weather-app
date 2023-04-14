@@ -19,7 +19,7 @@ export function buildStructures() {
 }
 
 async function defaultWeather() {
-  const data = await getWeather('Ogden');
+  const data = await getWeather('Seattle');
   return new MyWeather(data);
 }
 
@@ -65,12 +65,18 @@ export async function defaultInfoBuild() {
   return appendInfo(defaultData, 'amer');
 }
 
-export async function buttonClicked(weatherFormat) {
+async function updateWeather(weatherFormat) {
   const cityChoice = selectors().inputForm.inputField.value;
   const data = await getWeather(cityChoice);
   const myData = new MyWeather(data);
-  const format = weatherFormat; // TODO: needs to check user choice when implemented
-  appendInfo(myData, format);
+  appendInfo(myData, weatherFormat);
+}
+
+export function buttonClicked() {
+  const format = selectors().inputForm.formatSwitch.checked;
+  if (!format) {
+    updateWeather('amer');
+  } else updateWeather('else');
 }
 
 export function switchActivated(e) {
@@ -79,4 +85,17 @@ export function switchActivated(e) {
   if (!format) {
     buttonClicked('amer');
   } else buttonClicked('else');
+}
+
+export function keyboardListen() {
+  const input = selectors().inputForm.inputField;
+  // eslint-disable-next-line prefer-arrow-callback, func-names
+  input.addEventListener('keypress', function (e) {
+    if (document.hasFocus(input)) {
+      if (e.key === 'Enter') {
+        console.log('Enter');
+        buttonClicked();
+      }
+    }
+  });
 }

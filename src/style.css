@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 div {
   border: 1px solid red;
@@ -26,23 +26,29 @@ div > div > div > div > div {
 
 body {
   background-color: #1a1a19;
-  font-family: 'Space Mono', monospace;
+  font-family: 'Share Tech Mono', monospace;
   color: rgb(145, 253, 159);
   text-shadow: 0 0 4px rgb(86, 221, 104), 0 0 8px rgb(57, 207, 77);
 }
 
 .main-area {
   min-width: 20rem;
-  max-width: 35rem;
+  max-width: 38rem;
 }
 
 .hero-container {
   display: flex;
+  justify-content: space-between;
   min-height: 10rem;
 }
 
 .high-low {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.high-low > div {
+  flex-shrink: 0;
 }
 
 .switch-container {
@@ -51,4 +57,61 @@ body {
 
 .current-temp {
   font-size: 4rem;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 3px;
+  left: 0;
+  right: 0;
+  bottom: 3px;
+  background-color: #1a1a19;
+  border: 1px solid;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  top: 2px;
+  content: '';
+  height: 21px;
+  width: 23px;
+  left: 2px;
+  bottom: 4px;
+  background-color: #1a1a19;
+  border: 1px solid;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+} */
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
