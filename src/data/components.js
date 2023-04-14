@@ -29,8 +29,6 @@ export default function componentElements() {
           )
           .addChild(ele.divCIT('switch-c', 'switch-c', 'C°'))
       );
-      
-      
   }
 
   function location() {

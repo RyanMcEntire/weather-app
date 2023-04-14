@@ -75,9 +75,8 @@ export async function buttonClicked(weatherFormat) {
 
 export function switchActivated(e) {
   const format = e.target.checked;
-  console.log('switch info', format)  
+  console.log('switch info', format);
   if (!format) {
-    buttonClicked('amer')
-  }
-  else buttonClicked('else')
+    buttonClicked('amer');
+  } else buttonClicked('else');
 }
