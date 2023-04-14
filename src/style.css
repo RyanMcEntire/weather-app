@@ -60,7 +60,6 @@ input:focus {
 }
 
 .main-area {
-  
   min-width: 20rem;
   max-width: 38rem;
   margin: auto;
@@ -71,6 +70,10 @@ input:focus {
   display: flex;
   justify-content: space-between;
   min-height: 10rem;
+}
+
+.hero-2 {
+  flex-grow: 1;
 }
 
 .high-low {
