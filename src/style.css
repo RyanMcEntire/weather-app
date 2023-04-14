@@ -1,27 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono&family=Share+Tech+Mono&display=swap');
 
 div {
-  border: 1px solid red;
+  border: 1px solid rgb(255, 0, 0);
   min-height: 1rem;
   min-width: 1rem;
   padding: 2px;
+  box-shadow: 0 0 3px red, inset 0 0 3px red;
 }
 
 div > div {
   border: 1px solid olivedrab;
   margin: 5px;
+  box-shadow: 0 0 3px olivedrab, inset 0 0 3px olivedrab;
 }
 
 div > div > div {
   border: 1px solid rgb(35, 142, 137);
+  box-shadow: 0 0 3px rgb(35, 142, 137), inset 0 0 3px rgb(35, 142, 137);
 }
 
 div > div > div > div {
   border: 1px solid rgb(117, 35, 142);
+  box-shadow: 0 0 3px rgb(117, 35, 142), inset 0 0 3px rgb(117, 35, 142);
 }
 
 div > div > div > div > div {
   border: 1px solid rgb(142, 92, 35);
+  box-shadow: 0 0 3px rgb(142, 92, 35), inset 0 0 3px rgb(142, 92, 35);
 }
 
 body {
@@ -29,6 +34,29 @@ body {
   font-family: 'Share Tech Mono', monospace;
   color: rgb(145, 253, 159);
   text-shadow: 0 0 4px rgb(86, 221, 104), 0 0 8px rgb(57, 207, 77);
+}
+
+button {
+  background-color: #4b4b48;
+  color: rgb(145, 253, 159);
+  border-color: rgb(35, 142, 137);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+input {
+  margin: 5px;
+  background-color: #1a1a19;
+  color: rgb(145, 253, 159);
+  border-color: rgb(35, 142, 137);
+  box-shadow: 0 0 3px rgb(35, 142, 137);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+input:focus {
+  outline: none !important;
+  border: 2px rgb(55, 189, 182);
+  border-style: solid;
+  box-shadow: 0 0 6px rgb(32, 112, 108), inset 0 0 6px rgb(32, 112, 108);
 }
 
 .main-area {
@@ -65,6 +93,7 @@ body {
   display: inline-block;
   width: 60px;
   height: 34px;
+  font-family: 'Overpass Mono';
 }
 
 /* Hide default HTML checkbox */
@@ -82,8 +111,9 @@ body {
   left: 0;
   right: 0;
   bottom: 3px;
-  background-color: #1a1a19;
+  background-color: #2b2b29;
   border: 1px solid;
+  box-shadow: 0 0 3px rgb(36, 202, 133);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -91,7 +121,7 @@ body {
 .slider:before {
   position: absolute;
   top: 2px;
-  content: '';
+  content: ':)';
   height: 21px;
   width: 23px;
   left: 2px;
@@ -100,18 +130,24 @@ body {
   border: 1px solid;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  transform: scaleX(1);
+  text-align: center;
 }
 
 /* input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 } */
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  transform: translateX(26px), scaleX(-1);
+}
+
+input:checked + .slider:after {
+  transform: scaleX(1);
 }

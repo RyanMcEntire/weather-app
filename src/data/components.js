@@ -28,7 +28,7 @@ export default function componentElements() {
                   .checkCIIn('switch-box', 'switch-box', defaultFormat)
                   .addEventListener('click', (e) => switchActivated(e))
               )
-              .addChild(ele.spanC('slider'))
+              .addChild(ele.spanCI('slider', 'slider'))
           )
           .addChild(ele.divCIT('switch-c', 'switch-c', 'C°'))
       );

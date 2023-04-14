@@ -50,9 +50,10 @@ export default function components() {
     });
   }
 
-  function spanC(className) {
+  function spanCI(className, id) {
     return new Element('span').addAttributes({
       class: className,
+      id,
     });
   }
 
@@ -81,5 +82,15 @@ export default function components() {
     });
   }
 
-  return { divCI, divCIT, butCIT, radCINCh, imgSACI, inpCIIn, checkCIIn, spanC, labelC };
+  return {
+    divCI,
+    divCIT,
+    butCIT,
+    radCINCh,
+    imgSACI,
+    inpCIIn,
+    checkCIIn,
+    spanCI,
+    labelC,
+  };
 }
