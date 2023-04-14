@@ -60,8 +60,11 @@ input:focus {
 }
 
 .main-area {
+  
   min-width: 20rem;
   max-width: 38rem;
+  margin: auto;
+  margin-top: 2rem;
 }
 
 .hero-container {

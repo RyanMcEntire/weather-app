@@ -93,7 +93,6 @@ export function keyboardListen() {
   input.addEventListener('keypress', function (e) {
     if (document.hasFocus(input)) {
       if (e.key === 'Enter') {
-        console.log('Enter');
         buttonClicked();
       }
     }
