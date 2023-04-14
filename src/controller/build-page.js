@@ -50,6 +50,10 @@ async function appendInfo(weather, format) {
     format,
     'temp'
   )}°${tempSymbol()}`;
+  hero.feelsLike.textContent = `Feels like ${weather.getFormatData(
+    format,
+    'feelsLike'
+  )}°${tempSymbol()}`;
   hero.conditionText.textContent = `condition: \n${weather.getData(
     'condition'
   )}`;
@@ -61,10 +65,19 @@ export async function defaultInfoBuild() {
   return appendInfo(defaultData, 'amer');
 }
 
-export async function buttonClicked() {
+export async function buttonClicked(weatherFormat) {
   const cityChoice = selectors().inputForm.inputField.value;
   const data = await getWeather(cityChoice);
   const myData = new MyWeather(data);
-  const format = 'amer'; // TODO: needs to check user choice when implemented
+  const format = weatherFormat; // TODO: needs to check user choice when implemented
   appendInfo(myData, format);
+}
+
+export function switchActivated(e) {
+  const format = e.target.checked;
+  console.log('switch info', format)  
+  if (!format) {
+    buttonClicked('amer')
+  }
+  else buttonClicked('else')
 }

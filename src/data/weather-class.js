@@ -29,10 +29,10 @@ export default class MyWeather {
   }
 
   getData(thing) {
-    return this[thing]
+    return this[thing];
   }
 
   getFormatData(format, data) {
-    return this[data][format]
+    return this[data][format];
   }
 }

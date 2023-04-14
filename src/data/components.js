@@ -1,11 +1,12 @@
 /* eslint-disable import/no-cycle */
 import components from './subcomponents';
-import { buttonClicked } from '../controller/build-page';
+import { buttonClicked, switchActivated } from '../controller/build-page';
 
 const ele = components();
 
 export default function componentElements() {
   const defaultCity = 'Ogden';
+  const defaultFormat = 'amer';
   function inputForm() {
     return ele
       .divCI('form-container', 'form-container')
@@ -14,7 +15,22 @@ export default function componentElements() {
         ele
           .butCIT('submit-city', 'submit-city', 'Get Weather')
           .addEventListener('click', () => buttonClicked())
+      )
+      .addChild(
+        ele
+          .divCI('switch-container', 'switch-container')
+          .addChild(ele.divCIT('switch-f', 'switch-f', 'F°'))
+          .addChild(ele.labelC('switch'))
+          .addChild(
+            ele
+              .checkCIIn('switch-box', 'switch-box', defaultFormat)
+              .addEventListener('click', (e) => switchActivated(e))
+              .addChild(ele.spanC('slider'))
+          )
+          .addChild(ele.divCIT('switch-c', 'switch-c', 'C°'))
       );
+      
+      
   }
 
   function location() {
@@ -44,7 +60,7 @@ export default function componentElements() {
       .addChild(
         ele
           .divCI('hero-2', 'hero-2')
-          // .addChild(ele.divCI('condition-icon', 'condition-icon'))
+          .addChild(ele.divCI('condition-icon', 'condition-icon'))
           .addChild(ele.divCI('condition-text', 'condition-text'))
       );
   }

@@ -45,6 +45,11 @@ body {
   display: flex;
 }
 
-.current-temp {
-  font-size: 5rem;
+.switch-container {
+  display: flex;
 }
+
+.current-temp {
+  font-size: 4rem;
+}
+

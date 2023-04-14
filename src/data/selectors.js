@@ -8,6 +8,7 @@ function selectors() {
       formContainer: byID('form-container'),
       inputField: byID('city-field'),
       submitButton: byID('submit-city'),
+      formatSwitch: byID('switch')
     },
     location: {
       locationContainer: byID('location-container'),

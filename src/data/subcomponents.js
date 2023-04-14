@@ -50,6 +50,27 @@ export default function components() {
     });
   }
 
+  function spanC(className) {
+    return new Element('span').addAttributes({
+      class: className,
+    });
+  }
+
+  function labelC(className) {
+    return new Element('label').addAttributes({
+      class: className,
+    });
+  }
+
+  function checkCIIn(className, id, init) {
+    return new Element('input').addAttributes({
+      class: className,
+      type: 'checkbox',
+      id,
+      value: init,
+    });
+  }
+
   // image
   function imgSACI(src, alt, className, id) {
     return new Element('img').addAttributes({
@@ -60,5 +81,5 @@ export default function components() {
     });
   }
 
-  return { divCI, divCIT, butCIT, radCINCh, imgSACI, inpCIIn };
+  return { divCI, divCIT, butCIT, radCINCh, imgSACI, inpCIIn, checkCIIn, spanC, labelC };
 }
